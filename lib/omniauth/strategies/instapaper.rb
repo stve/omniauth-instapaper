@@ -4,8 +4,8 @@ module OmniAuth
   module Strategies
     class Instapaper < OmniAuth::Strategies::XAuth
       option :client_options, {
-        :site               => 'http://www.instapaper.com/',
-        :access_token_url   => 'https://www.instapaper.com/api/1/oauth/access_token'
+        :site               => 'https://www.instapaper.com',
+        :access_token_path   => '/api/1/oauth/access_token'
       }
       option :xauth_options, { :title => 'OmniAuth Instapaper'}
 
@@ -20,7 +20,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= MultiJson.decode(access_token.get("https://www.instapaper.com/api/1/account/verify_credentials").body).first
+        @raw_info ||= MultiJson.decode(access_token.get("/api/1/account/verify_credentials").body).first
       end
 
     end
