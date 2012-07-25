@@ -14,11 +14,11 @@ describe OmniAuth::Strategies::Instapaper do
 
   describe '#client_options' do
     it 'has correct Instapaper site' do
-      subject.options.client_options.site.should eq('http://www.instapaper.com/')
+      subject.options.client_options.site.should eq('https://www.instapaper.com')
     end
 
     it 'has correct access token url' do
-      subject.options.client_options.access_token_url.should eq('https://www.instapaper.com/api/1/oauth/access_token')
+      subject.options.client_options.access_token_path.should eq('/api/1/oauth/access_token')
     end
   end
 
